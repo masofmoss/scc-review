@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading the candidate</title>
+<!-- Two top pages: the lenses and the map. Lenses use a segmented tab for Identity, Integrity, Outcome. Everything scrolls inside a fixed-height padded frame so the page never jumps. Carries the real 6-18 Ernie read. Copy rules: no em dashes, nothing in parentheses. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* House cream design system — locked tokens, pasted verbatim from _shared/cream-tokens.css. Do not edit values here. */
+:root{
+  --canvas:#faf9f5;
+  --surface-soft:#f5f0e8;
+  --surface-card:#efe9de;
+  --surface-dark:#181715;
+  --surface-dark-elev:#252320;
+  --hairline:#e6dfd8;
+
+  --ink:#141413;
+  --body:#3d3d3a;
+  --muted:#6c6a64;
+  --muted-soft:#8e8b82;
+  --on-dark:#faf9f5;
+  --on-dark-soft:#a09d96;
+
+  /* Accents — set by Justin 2026-06-18. Violet removed. */
+  --sel:#0E314C;          /* selection / active accent = SCC navy, used sparingly */
+  --accent-amber:#F8AB1F; /* warm accent / single highlight, used sparingly */
+  --grn:#3f8f6a;
+  --amb:#a8791f;
+  --red:#b8556a;
+
+  --serif:"EB Garamond",Georgia,"Times New Roman",serif;
+  --sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+
+  --r:18px;
+  --r2:13px;
+  --rp:16px;
+
+  --shadow:0 1px 2px rgba(20,18,16,.04),0 10px 30px rgba(20,18,16,.05);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--sans);font-size:16px;line-height:1.55;color:var(--body);background:var(--canvas);-webkit-font-smoothing:antialiased;padding:0 0 70px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+
+/* Header */
+header.hd{padding:20px 0 4px}
+.kick{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 16px}
+h1{font-family:var(--serif);font-size:46px;font-weight:400;letter-spacing:-.8px;margin:0 0 14px;line-height:1.08;color:var(--ink)}
+.lede{color:var(--body);max-width:40rem;font-size:18px;margin:0}
+.stamp{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft);margin:16px 0 0}
+button:focus{outline:none}
+.toptab:focus-visible,.ltab:focus-visible,.refresh:focus-visible{outline:2px solid var(--sel);outline-offset:2px;border-radius:8px}
+
+/* Top tabs, two pages, substrate style */
+.toptabs{position:relative;display:inline-flex;gap:26px;margin:34px 0 0;padding:20px 24px;border-radius:24px;background:#fff;box-shadow:var(--shadow)}
+.toptab{position:relative;cursor:pointer;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#cbc4b8;background:none;border:none;font-weight:600;padding:0}
+.toptab:hover{color:var(--muted)}
+.toptab.on{color:var(--muted)}
+.toptab.on::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:#c2bbae}
+.pg{display:none}
+.pg.on{display:block}
+
+/* Inner segmented tab for the lenses, matched to the Ernie read severity toggle */
+.lenstabs{display:inline-flex;gap:4px;padding:6px;border-radius:14px;background:var(--surface-soft);border:1px solid var(--hairline);margin:0 0 16px}
+.ltab{cursor:pointer;font-family:var(--serif);font-size:18px;font-weight:400;padding:9px 24px;border-radius:9px;border:0;background:none;color:var(--muted);transition:.15s;user-select:none}
+.ltab:hover{color:var(--ink)}
+.ltab.on{background:var(--ink);color:var(--on-dark)}
+/* lens line, one quiet mono line, lens word navy with a soft glow, like the Ernie facet description */
+.lensline{margin:4px 2px 18px;font-family:var(--mono);font-size:12px;color:var(--muted-soft);line-height:1.5}
+.lensline .lt{color:var(--sel);text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-right:10px;animation:lensglow 3.2s ease-in-out infinite}
+@keyframes lensglow{0%,100%{text-shadow:0 0 4px color-mix(in srgb,var(--sel) 26%,transparent)}50%{text-shadow:0 0 10px color-mix(in srgb,var(--sel) 55%,transparent),0 0 20px color-mix(in srgb,var(--sel) 28%,transparent)}}
+
+/* Sunken edgeless pad, matched to the Ernie read. Wrapper reserves a stable height so the page never jumps; the pad shrinks to its content so there is no empty box. */
+.qscrollwrap{min-height:74vh}
+.qscroll{max-height:74vh;overflow-y:auto;border:0;border-radius:14px;padding:22px 22px 8px;background:linear-gradient(180deg,#f1ece3,#f8f4ed);box-shadow:inset 0 2px 16px rgba(20,18,16,.09)}
+.qscroll::-webkit-scrollbar{width:10px}
+.qscroll::-webkit-scrollbar-thumb{background:#cfc8bd;border-radius:999px;border:3px solid transparent;background-clip:padding-box}
+
+/* Question card, borderless white, floating on a soft shadow, like the Ernie cards */
+.qcard{background:#fff;border:0;border-radius:var(--rp);box-shadow:0 1px 2px rgba(20,18,16,.05),0 12px 30px rgba(20,18,16,.09);padding:22px 26px;margin:0 0 16px;cursor:pointer;transition:box-shadow .14s}
+.qcard.on{box-shadow:0 0 0 1.8px var(--sel),0 12px 30px rgba(20,18,16,.09)}
+.qcard.rel{box-shadow:0 0 0 1.4px var(--sel),0 12px 30px rgba(20,18,16,.09)}
+.qhead{display:flex;align-items:baseline;gap:14px;margin:0 0 16px}
+.qnum{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--sel);flex:none}
+.qtitle{font-family:var(--serif);font-size:23px;font-weight:500;color:var(--ink);line-height:1.2;flex:1;margin:0}
+.chip{flex:none;font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:5px 11px;border-radius:999px;white-space:nowrap}
+.chip.red{background:rgba(184,85,106,.12);color:var(--red);border:1px solid rgba(184,85,106,.34)}
+.chip.amber{background:rgba(168,121,31,.13);color:var(--amb);border:1px solid rgba(168,121,31,.4)}
+.qrow{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:9px 0;border-top:1px solid var(--hairline)}
+.qrow:first-of-type{border-top:0;padding-top:2px}
+.ql{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-soft);padding-top:3px}
+.qt{font-size:14.5px;color:var(--body);line-height:1.55}
+.qadv{margin:13px 0 0;background:var(--surface-soft);border:1px solid var(--hairline);border-radius:var(--r2);padding:14px 18px}
+.qal{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--sel);margin:0 0 6px}
+.qat{font-size:14.5px;color:var(--ink);line-height:1.55}
+.qmaps{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:13px}
+.qmaps .ml{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted-soft)}
+.qmaps .mc{font-size:11px;color:var(--muted);background:var(--surface-soft);border:1px solid var(--hairline);padding:2px 9px;border-radius:999px}
+
+/* Map tracer */
+.maphead{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;margin:0 2px 12px}
+.maphead .mt{font-family:var(--serif);font-size:21px;font-weight:500;color:var(--ink);margin:0}
+.maphead .mh{font-size:12.5px;color:var(--muted);margin-top:4px;max-width:66ch}
+.refresh{flex:none;font-family:var(--sans);background:#fff;border:1px solid var(--hairline);color:var(--muted);font-weight:600;font-size:12px;border-radius:var(--r2);padding:8px 14px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;box-shadow:var(--shadow)}
+.refresh:hover{background:var(--surface-card);color:var(--ink)} .refresh svg{width:13px;height:13px}
+.mapframe{border-radius:14px;background:linear-gradient(180deg,#f1ece3,#f8f4ed);box-shadow:inset 0 2px 16px rgba(20,18,16,.09);overflow:hidden}
+.scroll{position:relative;overflow-x:auto;padding:14px 20px 18px}
+.canvas{position:relative;min-width:880px}
+.cols{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;align-items:start}
+.colhead{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;font-weight:600;margin:0 0 12px;display:flex;align-items:center;gap:8px}
+.colhead .ct{opacity:.65;font-weight:500}
+.col.deliv .colhead{color:var(--sel)} .col.prom .colhead{color:var(--amb)} .col.cr .colhead{color:var(--red)}
+svg.wires{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:visible}
+.dn{position:relative;display:flex;align-items:center;gap:11px;padding:9px 11px;padding-right:26px;margin-bottom:10px;border-radius:var(--r2);cursor:pointer;background:#fff;border:1px solid var(--hairline);transition:all .14s ease}
+.dn:hover{background:var(--surface-card);border-color:var(--sel)}
+.dn.on{background:rgba(14,49,76,.08);border-color:var(--sel);box-shadow:0 0 0 1.8px var(--sel),0 8px 26px rgba(14,49,76,.14)}
+.dn .thumb{width:40px;height:32px;border-radius:7px;flex:none;overflow:hidden;background:#f1ebe0;border:1px solid var(--hairline)}
+.dn .nm{font-size:13px;font-weight:600;color:var(--ink);line-height:1.2}
+.dn .ex{font-family:var(--mono);font-size:9px;color:var(--muted-soft);letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
+.dn::after{content:"";position:absolute;right:13px;top:50%;width:6px;height:6px;border-right:2px solid rgba(14,49,76,.5);border-top:2px solid rgba(14,49,76,.5);transform:translateY(-50%) rotate(45deg);opacity:.45;transition:opacity .15s}
+.dn:hover::after,.dn.on::after{opacity:1}
+.pn{font-size:12px;color:var(--body);padding:6px 11px;margin-bottom:8px;border-radius:9px;background:#fff;border:1px solid var(--hairline);transition:all .14s ease}
+.pn.on{background:rgba(168,121,31,.12);border-color:var(--amb);color:var(--ink)}
+.crn{position:relative;padding:10px 13px;padding-right:26px;margin-bottom:10px;border-radius:var(--r2);color:var(--ink);font-size:13px;line-height:1.34;cursor:pointer;background:#fff;border:1px solid var(--hairline);box-shadow:var(--shadow);transition:all .14s ease}
+.crn.red{border-color:rgba(184,85,106,.45)} .crn.amber{border-color:rgba(168,121,31,.4)}
+.crn:hover{border-color:#d4ccc0}
+.crn.red.on{box-shadow:0 0 0 1.8px var(--red),0 8px 24px rgba(184,85,106,.18);border-color:var(--red)}
+.crn.amber.on{box-shadow:0 0 0 1.8px var(--amb),0 8px 24px rgba(168,121,31,.18);border-color:var(--amb)}
+.crn .crtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;gap:8px}
+.crn .lab{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.crn.red .lab{color:var(--red)} .crn.amber .lab{color:var(--amb)}
+.crn .ctrls{display:flex;gap:6px;opacity:0;transition:opacity .15s} .crn:hover .ctrls{opacity:1}
+.crn .ic{background:var(--surface-soft);border:none;color:var(--muted);width:20px;height:20px;border-radius:6px;cursor:pointer;display:grid;place-items:center;padding:0}
+.crn .ic:hover{background:var(--surface-card);color:var(--ink)} .crn .ic svg{width:12px;height:12px}
+.crn .atext{font-weight:600}
+.crn .aedit{width:100%;background:var(--surface-soft);border:1px solid var(--hairline);color:var(--ink);border-radius:8px;padding:6px 8px;font-size:13px;font-family:inherit;outline:none}
+.crn::after{content:"";position:absolute;right:13px;top:50%;width:6px;height:6px;border-right:2px solid rgba(20,18,16,.3);border-top:2px solid rgba(20,18,16,.3);transform:translateY(-50%) rotate(45deg);opacity:.4;transition:opacity .15s}
+.crn:hover::after,.crn.on::after{opacity:1}
+.addalert{margin-top:4px;display:flex;gap:8px}
+.addalert input{flex:1;background:var(--surface-soft);border:1px solid var(--hairline);color:var(--ink);border-radius:10px;padding:9px 12px;font-size:12.5px;font-family:inherit;outline:none}
+.addalert input::placeholder{color:var(--muted-soft)}
+.addalert button{background:var(--ink);color:var(--on-dark);border:1px solid var(--ink);border-radius:12px;padding:0 14px;font-size:12.5px;font-weight:600;cursor:pointer}
+/* Trace readout, fixed height so selection never reflows the page */
+.trace{margin:2px 20px 18px;border-radius:var(--r2);background:#fff;border:1px solid var(--hairline);height:120px;overflow:auto;padding:13px 16px}
+.trace .th{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--sel);font-weight:600;margin-bottom:8px}
+.trace ul{margin:0;padding:0;list-style:none}
+.trace li{display:grid;grid-template-columns:16px 1fr;gap:9px;color:var(--body);font-size:13px;padding:3px 0}
+.trace li svg{margin-top:4px;color:var(--sel)}
+.trace .hint{font-size:12.5px;color:var(--muted-soft)}
+
+@media(max-width:720px){ h1{font-size:30px} .qrow{grid-template-columns:1fr} .qrow .ql{padding-top:0} .qscroll{height:64vh} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="toptabs">
+    <button class="toptab on" data-pg="read">The lenses</button>
+    <button class="toptab" data-pg="map">The map</button>
+  </div>
+
+  <header class="hd">
+    <div class="kick">SleepCycle · candidate read · for Michael</div>
+    <h1>Reading the candidate</h1>
+    <p class="lede">The 6-18 read, weighed against what the business cannot afford. Three lenses, identity, integrity, outcome. Pick a lens to read it, then open the map to trace what each piece can cost.</p>
+    <div class="stamp" id="stamp"></div>
+  </header>
+
+  <!-- PAGE 1, the lenses -->
+  <div id="pg-read" class="pg on">
+    <div class="lenstabs" id="lenstabs"></div>
+    <div class="lensline" id="lensline"></div>
+    <div class="qscrollwrap"><div class="qscroll" id="qscroll"></div></div>
+  </div>
+
+  <!-- PAGE 2, the map -->
+  <div id="pg-map" class="pg">
+    <div class="maphead">
+      <div>
+        <p class="mt">What he delivered, what he promises, what it can cost</p>
+        <div class="mh">Click his work to trace forward, an alert to trace back.</div>
+      </div>
+      <button class="refresh" onclick="refresh()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>Refresh</button>
+    </div>
+    <div class="mapframe">
+      <div class="scroll">
+        <div class="canvas" id="canvas">
+          <svg class="wires" id="wires"></svg>
+          <div class="cols">
+            <div class="col deliv"><div class="colhead">What he delivered <span class="ct">real artifacts</span></div><div id="delivCol"></div></div>
+            <div class="col prom"><div class="colhead">What he is promising <span class="ct">the package</span></div><div id="promCol"></div></div>
+            <div class="col cr"><div class="colhead">Alerts <span class="ct">what we cannot have</span></div><div id="crCol"></div>
+              <div class="addalert"><input id="alertInput" placeholder="Add an alert, what the business cannot have" maxlength="90"><button onclick="addAlert()">Add</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="trace" id="trace"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const KEY='michael-alerts-v6';
+const seed=[
+  {id:'a0',sev:'red',text:'Medical data leaks or is mishandled, a HIPAA breach'},
+  {id:'a1',sev:'red',text:'We never own the model or the data, locked to a rented API'},
+  {id:'a2',sev:'red',text:'A national view sees local clinical detail it never should'},
+  {id:'a3',sev:'red',text:'A flat HTML mock that cannot carry PHI, no defense in depth'},
+  {id:'a4',sev:'red',text:'The chain is manipulated to leak data, no adversarial security'},
+  {id:'a5',sev:'amber',text:'Compliance is a checkbox bolted on, not security architecture'},
+  {id:'a6',sev:'amber',text:'No plan and no FDA pathway, left to the candidate'},
+  {id:'a7',sev:'amber',text:"Dr. Denman's authority is cheapened, the Dr. Oz effect"}
+];
+let alerts;
+try{ alerts=JSON.parse(localStorage.getItem(KEY)); if(!Array.isArray(alerts)||!alerts.length) alerts=null; }catch(e){ alerts=null; }
+if(!alerts) alerts=seed.map(a=>({...a,custom:false}));
+alerts.forEach(a=>{ if(!a.sev){ const s=seed.find(x=>x.id===a.id); a.sev=s?s.sev:'red'; } });
+function saveAlerts(){ try{ localStorage.setItem(KEY,JSON.stringify(alerts)); }catch(e){} }
+
+const promises=[
+ {id:'p0',label:'Brand system'},{id:'p1',label:'Naming and identity'},{id:'p2',label:'Nine digital surfaces'},
+ {id:'p3',label:'Patient app'},{id:'p4',label:'Franchisor dashboard'},{id:'p5',label:'HIPAA and SOC 2'},
+ {id:'p6',label:'FDA strategy'},{id:'p7',label:'Device integrations'},{id:'p8',label:'Data warehouse'},
+ {id:'p9',label:'Marketing automation'},{id:'p10',label:'Paid media engine'},{id:'p11',label:'App development'},
+ {id:'p12',label:'The AI engine'},{id:'p13',label:'Investor data room'},{id:'p14',label:'Billing and RCM'},{id:'p15',label:'Compliance program'}
+];
+const baseMap={
+ a0:['p3','p5','p7','p8','p11','p12','p14'],
+ a1:['p12','p8'],
+ a2:['p2','p4','p15'],
+ a3:['p2','p11'],
+ a4:['p5','p12'],
+ a5:['p5','p15'],
+ a6:['p6','p13'],
+ a7:['p0','p1']
+};
+const baseIds=new Set(seed.map(a=>a.id));
+const delivered=[
+ {id:'d0',nm:'Site rebuild mock',type:'web',to:['p2','p1']},
+ {id:'d1',nm:'Patient app mock',type:'app',to:['p3','p11']},
+ {id:'d2',nm:'Location dashboard',type:'dash',to:['p4','p3']},
+ {id:'d3',nm:'Franchisor dashboard',type:'dash',to:['p4','p8']},
+ {id:'d4',nm:'Deliverables map',type:'deck',to:['p13','p15']},
+ {id:'d5',nm:'Architecture doc',type:'arch',to:['p12','p8']},
+ {id:'d6',nm:'Brand concept',type:'brand',to:['p0','p1']}
+];
+function dName(id){const d=delivered.find(x=>x.id===id);return d?d.nm:id;}
+
+const lenses={
+ id:{name:'Identity',color:'#0E314C',line:'The brand and Dr. Denman are the moat. If the work is not built from what TLI already is, it was built from a prompt.'},
+ int:{name:'Integrity',color:'#3f8f6a',line:'A regulated medical network. Privacy, access, ownership, and grounded claims are the license to operate.'},
+ out:{name:'Outcome',color:'#a8791f',line:'It has to be simple, and it has to have a plan. What gets built, when, and who it affects.'}
+};
+const lensOrder=['id','int','out'];
+const questions=[
+ {id:'qkeep',lens:'id',tag:'Keep or remodel',sev:'red',q:'What did you keep from what TLI already runs, and what did you remodel?',maps:['d0','d6'],
+   strong:'Build on the live site and brand that already work, and name what to keep and what to change, with reasons.',
+   said:'A pure HTML mock with a Git repo and a CDN that scored 99 on performance, no backend.',
+   advise:'Their own live site is dynamic, with many endpoints and a HIPAA form. The mock is a regression from what they already run. Build on it, do not start over to something thinner.'},
+ {id:'qmodel',lens:'int',tag:'Model and ownership',sev:'red',q:'What model are you using, where does it sit, and who owns the data?',maps:['d5'],
+   strong:'Name where the model and the data live, separate wireframing on a closed model from running on one, and say who owns the data.',
+   said:'Anthropic, version four point eight, not retraining, just setting expectations on the export. The live demo ran Sonnet, not 4.8.',
+   advise:'On a closed API, TLI does not own the data and rides someone else uptime. Stand up an owned core on Ollama and Qwen and train it, with a reasoning layer over the closed models for the high level work.'},
+ {id:'qtrain',lens:'int',tag:'Training',sev:'red',q:'How does the model train on our data so it improves and stays ours?',maps:['d5'],
+   strong:'Our knowledge goes into the model, and the system and the data are the value, not a rented model.',
+   said:'Nothing on training. He framed it as setting expectations on the export.',
+   advise:'No path for the result to become ours keeps TLI dependent. Train the owned core with a tool like Unsloth so it improves against benchmarks.'},
+ {id:'qphi',lens:'int',tag:'PHI boundary',sev:'red',q:"Where does a national user get stopped from seeing a local patient's clinical detail?",maps:['d2','d3','d1'],
+   strong:'Walk one medical file from entry to storage, and name the database, the segmentation, and the PHI boundary.',
+   said:'Great questions, maybe the EMR holds it read only, and I do not have all the answers.',
+   advise:'He could not say where PHI lives or how a national view is stopped. A vector database for retrieval at scale, real segmentation, and an explicit PHI boundary, security first.'},
+ {id:'qadv',lens:'int',tag:'Adversarial security',sev:'red',q:'What is the adversarial security posture, not just functional QA?',maps:['d5','d1'],
+   strong:'An adversarial security posture and a plan to protect the data going in, not only functional tests.',
+   said:'An automated testing tool and AI test cases, physicians probe for misdiagnosis. The dev lead had not heard of adversarial prompting.',
+   advise:'The risk is someone manipulating the chain to get data they should not. Test wherever the model sits against OWASP and the OWASP AI guides, with an adversarial bank for the business logic surface.'},
+ {id:'qguard',lens:'int',tag:'Guardrails',sev:'amber',q:'Hard guardrails versus soft, and the path to earned trust?',maps:['d5'],
+   strong:'Distinguish deterministic hard guardrails from earned soft guardrails, with a path to trust over time.',
+   said:'Guardrails on the LLM, and triage cannot go live because the model cannot be trusted with the call.',
+   advise:'The premise that AI cannot make the call is not permanent. Keep deterministic hard guardrails and earn soft guardrail confidence by training on an owned model.'},
+ {id:'qnex',lens:'int',tag:'Nexstar',sev:'amber',q:'On Nexstar, where is that data actually handled?',maps:['d4','d5'],
+   strong:'Show the data handling path on a system they already ship.',
+   said:'The scraping and aggregation were done in a very safe and governed fashion, with no answer on where the data lives.',
+   advise:'A claim without proof, the same gap as the PHI question, on a build they actually run. Make the candidate show the path on a live system first.'},
+ {id:'qcomp',lens:'int',tag:'Security vs compliance',sev:'amber',q:'Is security the architecture, or compliance bolted on later?',maps:['d4','d5'],
+   strong:'Treat security as architecture, not a compliance checkbox added later.',
+   said:'HIPAA, SOC 2, and HiTrust are a layer on top of the product, and SOC 2 can take a year.',
+   advise:'Compliance is a checkbox. Security is what lands enterprise customers, and it lands them sooner. Build the architecture first and let enterprise pull you toward compliance. FedRAMP is the exception.'},
+ {id:'qplan',lens:'out',tag:'The plan',sev:'red',q:'Where is the plan, the order of operations, not just the deliverables?',maps:['d4'],
+   strong:'A clear plan and order of operations, what gets built, when, why, and who it affects.',
+   said:'No technical specs or scope yet, everything shown is spec, and nobody on TLI side has technical expertise.',
+   advise:'There is no plan. Phase it crawl, walk, run, with the architecture planned up front, especially the FDA path.'},
+ {id:'qfda',lens:'out',tag:'FDA pathway',sev:'red',q:'What is the FDA pathway?',maps:['d4','d5'],
+   strong:'Honest that this is a gap, with a certification path owned, not improvised.',
+   said:'No, not class one exempt or class two, and the quote assumed no FDA submission.',
+   advise:'A disqualifying gap if left to the candidate, on a build riding on Dr. Denman credibility. Bring the pathway in through Levi as the certification path, phased crawl, walk, run.'}
+];
+
+function heuristic(a){
+  const STOP=new Set(['that','this','with','from','they','them','your','our','the','and','for','are','not','can','has','have','into','sees','what','will','its','it','is','an','of','to','no','we','be','at','reads','like','never','own']);
+  const words=a.text.toLowerCase().replace(/[^a-z ]/g,' ').split(/\s+/).filter(w=>w.length>3&&!STOP.has(w));
+  if(!words.length) return [];
+  return promises.map(p=>{const lab=p.label.toLowerCase();let s=0;words.forEach(w=>{if(lab.includes(w))s++;});return {id:p.id,s};}).filter(x=>x.s>0).sort((x,y)=>y.s-x.s).slice(0,3).map(x=>x.id);
+}
+function rebuildMappings(){
+  promises.forEach(p=>p.alerts=[]);
+  alerts.forEach(a=>{
+    if(baseIds.has(a.id) && !a.custom){ (baseMap[a.id]||[]).forEach(pid=>{const p=promises.find(x=>x.id===pid);if(p)p.alerts.push(a.id);}); }
+    else { heuristic(a).forEach(pid=>{const p=promises.find(x=>x.id===pid);if(p&&!p.alerts.includes(a.id))p.alerts.push(a.id);}); }
+  });
+}
+
+function thumb(t){
+  const g={
+    web:'<rect width="40" height="32" fill="#f1ebe0"/><rect width="40" height="7" fill="#e2dacd"/><circle cx="5" cy="3.5" r="1.2" fill="#0E314C"/><rect x="6" y="11" width="28" height="8" rx="2" fill="url(#a)"/><rect x="6" y="22" width="18" height="2.4" rx="1" fill="#cabfae"/>',
+    app:'<rect width="40" height="32" fill="#f1ebe0"/><rect x="13" y="3" width="14" height="26" rx="3" fill="#e2dacd"/><rect x="16" y="7" width="8" height="8" rx="2" fill="url(#a)"/><rect x="16" y="18" width="8" height="2" rx="1" fill="#c2b6a3"/>',
+    dash:'<rect width="40" height="32" fill="#f1ebe0"/><rect x="5" y="6" width="13" height="9" rx="2" fill="url(#a)"/><rect x="21" y="6" width="14" height="9" rx="2" fill="#e2dacd"/><rect x="5" y="19" width="30" height="2.4" rx="1" fill="#cabfae"/><rect x="5" y="24" width="22" height="2.4" rx="1" fill="#d6ccbd"/>',
+    deck:'<rect width="40" height="32" fill="#f1ebe0"/><rect x="6" y="6" width="28" height="20" rx="2" fill="#e8e0d2"/><rect x="10" y="10" width="13" height="3" rx="1.5" fill="#0E314C"/><rect x="10" y="16" width="20" height="2.2" rx="1" fill="#cabfae"/>',
+    arch:'<rect width="40" height="32" fill="#f1ebe0"/><rect x="7" y="6" width="9" height="7" rx="2" fill="#e2dacd"/><rect x="24" y="6" width="9" height="7" rx="2" fill="#e2dacd"/><rect x="15" y="20" width="10" height="7" rx="2" fill="url(#a)"/><path d="M11 13 L20 20 M29 13 L20 20" stroke="#b6a994" stroke-width="1.4"/>',
+    brand:'<rect width="40" height="32" fill="#f1ebe0"/><circle cx="13" cy="16" r="6" fill="none" stroke="url(#a)" stroke-width="3"/><rect x="23" y="12" width="11" height="3" rx="1.5" fill="#b6a994"/><rect x="23" y="18" width="8" height="3" rx="1.5" fill="#cabfae"/>'
+  };
+  return '<svg width="40" height="32" viewBox="0 0 40 32"><defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0E314C"/><stop offset="1" stop-color="#2f5d7d"/></linearGradient></defs>'+(g[t]||g.deck)+'</svg>';
+}
+const tick='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"/></svg>';
+const penIco='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>';
+const xIco='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+
+let sel=null;          // {type:'deliv'|'alert'|'q'|'lens', id}
+let activeLens='id';   // which lens tab is showing
+let activePg='read';
+
+// Stamp
+(function(){
+  const r=questions.filter(q=>q.sev==='red').length, a=questions.filter(q=>q.sev==='amber').length;
+  document.getElementById('stamp').textContent='Candidate read · June 18 2026 · '+r+' code red · '+a+' caution';
+})();
+
+// Top tabs
+document.querySelectorAll('.toptab').forEach(t=>{
+  t.onclick=()=>{
+    activePg=t.dataset.pg;
+    document.querySelectorAll('.toptab').forEach(x=>x.classList.toggle('on',x===t));
+    document.getElementById('pg-read').classList.toggle('on',activePg==='read');
+    document.getElementById('pg-map').classList.toggle('on',activePg==='map');
+    if(activePg==='map'){ requestAnimationFrame(()=>{const s=lit();draw(s.D,s.P,s.A);}); }
+  };
+});
+
+// Lens segmented tabs
+const lenstabs=document.getElementById('lenstabs');
+lensOrder.forEach(k=>{
+  const L=lenses[k];const n=questions.filter(q=>q.lens===k).length;
+  const b=document.createElement('button');b.className='ltab'+(k===activeLens?' on':'');b.dataset.lens=k;
+  b.innerHTML=L.name;
+  b.onclick=()=>selectLensTab(k);
+  lenstabs.appendChild(b);
+});
+function renderLens(){
+  const L=lenses[activeLens];
+  document.getElementById('lensline').innerHTML='<span class="lt">'+L.name+'</span><span>'+L.line+'</span>';
+  document.querySelectorAll('.ltab').forEach(b=>b.classList.toggle('on',b.dataset.lens===activeLens));
+  const host=document.getElementById('qscroll');host.innerHTML='';
+  let n=0;
+  questions.filter(q=>q.lens===activeLens).forEach(q=>{
+    n++;const num=(n<10?'0':'')+n;
+    const el=document.createElement('div');el.className='qcard';el.dataset.q=q.id;
+    el.innerHTML='<div class="qhead"><span class="qnum">'+num+'</span><h3 class="qtitle">'+q.tag+'</h3><span class="chip '+q.sev+'">'+(q.sev==='red'?'Code red':'Caution')+'</span></div>'
+      +'<div class="qrow"><div class="ql">Asked</div><div class="qt">'+q.q+'</div></div>'
+      +'<div class="qrow"><div class="ql">A strong answer</div><div class="qt">'+q.strong+'</div></div>'
+      +'<div class="qrow"><div class="ql">Ernie said</div><div class="qt">'+q.said+'</div></div>'
+      +'<div class="qadv"><div class="qal">Advisement</div><div class="qat">'+q.advise+'</div></div>'
+      +'<div class="qmaps"><span class="ml">Asked at</span>'+q.maps.map(id=>'<span class="mc">'+dName(id)+'</span>').join('')+'</div>';
+    el.onclick=()=>selectQ(q.id);
+    host.appendChild(el);
+  });
+}
+function selectLensTab(k){ activeLens=k; sel={type:'lens',id:k}; renderLens(); render(); }
+
+// Map columns
+const dCol=document.getElementById('delivCol'),pCol=document.getElementById('promCol'),cCol=document.getElementById('crCol');
+delivered.forEach(d=>{const el=document.createElement('div');el.className='dn';el.dataset.id=d.id;el.innerHTML='<div class="thumb">'+thumb(d.type)+'</div><div><div class="nm">'+d.nm+'</div><div class="ex">Example</div></div>';el.onclick=()=>selectDeliv(d.id);dCol.appendChild(el);});
+promises.forEach(p=>{const el=document.createElement('div');el.className='pn';el.dataset.id=p.id;el.textContent=p.label;pCol.appendChild(el);});
+function renderAlerts(){
+  cCol.innerHTML='';
+  alerts.forEach(a=>{
+    const el=document.createElement('div');el.className='crn '+(a.sev||'red');el.dataset.id=a.id;
+    el.innerHTML='<div class="crtop"><span class="lab">'+(a.sev==='amber'?'Caution':'Code red')+'</span><span class="ctrls"><button class="ic" data-act="edit">'+penIco+'</button><button class="ic" data-act="del">'+xIco+'</button></span></div><div class="atext">'+a.text+'</div>';
+    el.querySelector('[data-act="edit"]').onclick=e=>{e.stopPropagation();editAlert(a.id,el);};
+    el.querySelector('[data-act="del"]').onclick=e=>{e.stopPropagation();delAlert(a.id);};
+    el.onclick=()=>selectAlert(a.id);
+    cCol.appendChild(el);
+  });
+}
+function editAlert(id,el){const a=alerts.find(x=>x.id===id);const t=el.querySelector('.atext');const inp=document.createElement('input');inp.className='aedit';inp.value=a.text;inp.maxLength=90;t.replaceWith(inp);inp.focus();function done(){const v=inp.value.trim();if(v&&v!==a.text){a.text=v;a.custom=true;}saveAlerts();renderAlerts();render();}inp.addEventListener('blur',done);inp.addEventListener('keydown',e=>{if(e.key==='Enter')inp.blur();});}
+function delAlert(id){alerts=alerts.filter(a=>a.id!==id);saveAlerts();rebuildMappings();if(sel&&sel.id===id)sel=null;renderAlerts();render();}
+function addAlert(){const i=document.getElementById('alertInput');const v=i.value.trim();if(!v)return;alerts.push({id:'u'+Date.now(),sev:'red',text:v,custom:true});saveAlerts();i.value='';rebuildMappings();renderAlerts();render();}
+function refresh(){rebuildMappings();renderAlerts();render();}
+document.getElementById('alertInput').addEventListener('keydown',e=>{if(e.key==='Enter')addAlert();});
+
+function selectQ(qid){ sel=(sel&&sel.type==='q'&&sel.id===qid)?{type:'lens',id:activeLens}:{type:'q',id:qid}; render(); }
+function selectDeliv(id){ sel=(sel&&sel.type==='deliv'&&sel.id===id)?null:{type:'deliv',id}; render(); }
+function selectAlert(id){ sel=(sel&&sel.type==='alert'&&sel.id===id)?null:{type:'alert',id}; render(); }
+function delivsForAlert(aid){ const promIds=promises.filter(p=>p.alerts.includes(aid)).map(p=>p.id); return delivered.filter(d=>d.to.some(pid=>promIds.includes(pid))).map(d=>d.id); }
+function questionsForDelivs(ids){ return questions.filter(q=>q.maps.some(m=>ids.includes(m))); }
+
+function lit(){
+  const D=new Set(),P=new Set(),A=new Set();
+  function chainFromDelivs(ids){ ids.forEach(did=>{D.add(did);const d=delivered.find(x=>x.id===did);if(!d)return;d.to.forEach(pid=>{P.add(pid);const p=promises.find(x=>x.id===pid);p.alerts.forEach(a=>A.add(a));});}); }
+  if(!sel) return {D,P,A};
+  if(sel.type==='deliv'){ chainFromDelivs([sel.id]); }
+  else if(sel.type==='alert'){ A.add(sel.id); promises.forEach(p=>{if(p.alerts.includes(sel.id))P.add(p.id);}); delivered.forEach(d=>{if(d.to.some(pid=>P.has(pid)))D.add(d.id);}); }
+  else if(sel.type==='q'){ const q=questions.find(x=>x.id===sel.id); chainFromDelivs(q.maps); }
+  else if(sel.type==='lens'){ const ids=new Set(); questions.filter(q=>q.lens===sel.id).forEach(q=>q.maps.forEach(i=>ids.add(i))); chainFromDelivs([...ids]); }
+  return {D,P,A};
+}
+const wires=document.getElementById('wires'),canvas=document.getElementById('canvas');
+function center(id,side){const n=document.querySelector('.cols [data-id="'+id+'"]');if(!n)return null;const cb=canvas.getBoundingClientRect(),r=n.getBoundingClientRect();return{x:(side==='r'?r.right:r.left)-cb.left,y:r.top-cb.top+r.height/2};}
+function path(a,b,hi){if(!a||!b)return;const dx=Math.max(40,(b.x-a.x)*0.5);const d='M '+a.x+' '+a.y+' C '+(a.x+dx)+' '+a.y+' '+(b.x-dx)+' '+b.y+' '+b.x+' '+b.y;const p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',d);p.setAttribute('fill','none');p.setAttribute('stroke',hi?'url(#hg)':'rgba(20,18,16,0.14)');p.setAttribute('stroke-width',hi?'2':'1');if(hi)p.setAttribute('filter','url(#glow)');wires.appendChild(p);}
+
+function render(){
+  const {D,P,A}=lit();
+  document.querySelectorAll('.deliv [data-id]').forEach(n=>n.classList.toggle('on',D.has(n.dataset.id)));
+  document.querySelectorAll('.prom [data-id]').forEach(n=>n.classList.toggle('on',P.has(n.dataset.id)));
+  document.querySelectorAll('.cr [data-id]').forEach(n=>n.classList.toggle('on',A.has(n.dataset.id)));
+  document.querySelectorAll('.qcard').forEach(n=>{
+    const q=questions.find(x=>x.id===n.dataset.q);
+    const isSel=sel&&sel.type==='q'&&sel.id===q.id;
+    let rel=false;
+    if(sel&&sel.type==='deliv') rel=q.maps.includes(sel.id);
+    else if(sel&&sel.type==='alert') rel=q.maps.some(m=>delivsForAlert(sel.id).includes(m));
+    n.classList.toggle('on',isSel);
+    n.classList.toggle('rel',rel&&!isSel);
+  });
+  drawTrace();
+  if(activePg==='map'){ draw(D,P,A); }
+}
+function drawTrace(){
+  const t=document.getElementById('trace');
+  let html='';
+  if(sel&&(sel.type==='deliv'||sel.type==='q')){
+    const did=sel.type==='deliv'?sel.id:questions.find(x=>x.id===sel.id).maps[0];
+    const d=delivered.find(x=>x.id===did);const qs=questions.filter(q=>q.maps.includes(d.id));
+    html='<div class="th">Questions that map to '+d.nm.toLowerCase()+'</div><ul>'+(qs.length?qs.map(q=>'<li>'+tick+'<span><b style="color:'+lenses[q.lens].color+'">'+q.tag+'.</b> '+q.q+'</span></li>').join(''):'<li>'+tick+'<span>No core question maps here.</span></li>')+'</ul>';
+  } else if(sel&&sel.type==='alert'){
+    const qs=questionsForDelivs(delivsForAlert(sel.id));
+    html='<div class="th">Questions raised by what this alert touches</div><ul>'+(qs.length?qs.map(q=>'<li>'+tick+'<span><b style="color:'+lenses[q.lens].color+'">'+q.tag+'.</b> '+q.q+'</span></li>').join(''):'<li>'+tick+'<span>Nothing he delivered maps to this. That gap is the point.</span></li>')+'</ul>';
+  } else if(sel&&sel.type==='lens'){
+    html='<div class="th">'+lenses[sel.id].name+' lights everything it touches</div><div class="hint">'+lenses[sel.id].line+'</div>';
+  } else {
+    html='<div class="hint">His delivered work and his promises both map to the alerts they would trigger. Where the lines converge is where it gets tested.</div>';
+  }
+  t.innerHTML=html;
+}
+function draw(D,P,A){
+  if(canvas.offsetParent===null) return;
+  wires.innerHTML='<defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0E314C"/><stop offset="1" stop-color="#b8556a"/></linearGradient><filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>';
+  delivered.forEach(d=>{ d.to.forEach(pid=>path(center(d.id,'r'),center(pid,'l'), D.has(d.id)&&P.has(pid))); });
+  promises.forEach(p=>{ p.alerts.forEach(aid=>path(center(p.id,'r'),center(aid,'l'), P.has(p.id)&&A.has(aid))); });
+}
+rebuildMappings();renderLens();renderAlerts();render();
+window.addEventListener('resize',()=>{const s=lit();draw(s.D,s.P,s.A);});
+</script>
+</body>
+</html>
