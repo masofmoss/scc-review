@@ -5,28 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Ernie read, for Michael</title>
 <!--
-  The Ernie read, for Michael. Cream house system, small Sleep Cycle navy accent,
-  no violet. Severity sits in a substrate segmented toggle (Code red, Caution).
-  A topic facet row drills into recurring topics; the active facet shows a short
-  description in a reserved glass panel below the row, so it never overlaps the
-  cards. The cards live in a fixed-height scroll section, so filtering never jumps
-  the page. Each entry is numbered, carries a pastel severity chip, and keeps the
-  five-part shape: raised, Ernie said, a strong answer, my read, the advisement.
-  Source of truth: _shared/_ernie-6-18-qa-confirmed.md. Self-contained.
-  Copy rules: no emojis, no em dashes, nothing in parentheses.
+ The Ernie read, for Michael. Cream house system, small Sleep Cycle navy accent,
+ no violet. Severity sits in a substrate segmented toggle (Code red, Caution).
+ A topic facet row drills into recurring topics; the active facet shows a short
+ description in a reserved glass panel below the row, so it never overlaps the
+ cards. The cards live in a fixed-height scroll section, so filtering never jumps
+ the page. Each entry is numbered, carries a pastel severity chip, and keeps the
+ five-part shape: raised, Ernie said, a strong answer, my read, the advisement.
+ Source of truth: _shared/_ernie-6-18-qa-confirmed.md. Self-contained.
+ Copy rules: no emojis, no em dashes, nothing in parentheses.
 -->
 <style>
 .erm-root{
-  --canvas:#faf9f5; --surface-soft:#f5f0e8; --surface-card:#efe9de;
-  --hairline:#e6dfd8; --soft-gray:#d8d2c8;
-  --ink:#141413; --body:#3d3d3a; --muted:#6c6a64; --muted-soft:#8e8b82;
-  --grn:#3f8f6a; --amb:#a8791f; --red:#b8556a;
-  --brand:#0E314C; --brand-2:#F8AB1F;
-  --serif:"EB Garamond",Georgia,"Times New Roman",serif;
-  --sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
-  --r:18px; --r2:13px; --rp:16px;
-  --shadow:0 1px 2px rgba(20,18,16,.04),0 10px 30px rgba(20,18,16,.05);
+ --canvas:#faf9f5; --surface-soft:#f5f0e8; --surface-card:#efe9de;
+ --hairline:#e6dfd8; --soft-gray:#d8d2c8;
+ --ink:#141413; --body:#3d3d3a; --muted:#6c6a64; --muted-soft:#8e8b82;
+ --grn:#3f8f6a; --amb:#a8791f; --red:#b8556a;
+ --brand:#0E314C; --brand-2:#F8AB1F;
+ --serif:"EB Garamond",Georgia,"Times New Roman",serif;
+ --sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+ --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+ --r:18px; --r2:13px; --rp:16px;
+ --shadow:0 1px 2px rgba(20,18,16,.04),0 10px 30px rgba(20,18,16,.05);
 }
 .erm-root{background:var(--canvas);color:var(--body);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;padding:64px 28px 56px;box-sizing:border-box}
 .erm-root *{box-sizing:border-box}
@@ -86,10 +86,10 @@
 .erm-adv .erm-at{font-size:14.5px;color:var(--ink);line-height:1.55}
 
 @media (max-width:680px){
-  .erm-h1{font-size:36px}
-  .erm-row{grid-template-columns:1fr;gap:5px}
-  .erm-scrollwrap{min-height:70vh}
-  .erm-scroll{max-height:70vh}
+ .erm-h1{font-size:36px}
+ .erm-row{grid-template-columns:1fr;gap:5px}
+ .erm-scrollwrap{min-height:70vh}
+ .erm-scroll{max-height:70vh}
 }
 </style>
 </head>
@@ -97,192 +97,192 @@
 <div class="erm-root">
 <div class="erm-inner">
 
-  <p class="erm-kick">SleepCycle · vendor read · for Michael</p>
-  <h1 class="erm-h1">The Ernie read</h1>
-  <p class="erm-lede">What was raised, what Ernie said, a strong answer, my read, and the advisement.</p>
-  <div class="erm-stamp">Grounded in the 6-18 TTC call and my notes</div>
+ <p class="erm-kick">SleepCycle · vendor read · for Michael</p>
+ <h1 class="erm-h1">The Ernie read</h1>
+ <p class="erm-lede">What was raised, what Ernie said, a strong answer, my read, and the advisement.</p>
+ <div class="erm-stamp">Grounded in the 6-18 TTC call and my notes</div>
 
-  <div class="erm-tabs">
-    <div class="erm-tab on" data-erm-tab="red">Code red</div>
-    <div class="erm-tab" data-erm-tab="amb">Caution</div>
-  </div>
+ <div class="erm-tabs">
+ <div class="erm-tab on" data-erm-tab="red">Code red</div>
+ <div class="erm-tab" data-erm-tab="amb">Caution</div>
+ </div>
 
-  <div class="erm-facets" data-erm-facets>
-    <div class="erm-facet on" data-erm-facet="all">All <span class="erm-c"></span></div>
-    <div class="erm-facet" data-erm-facet="Ownership">Ownership <span class="erm-c"></span></div>
-    <div class="erm-facet" data-erm-facet="Architecture">Architecture <span class="erm-c"></span></div>
-    <div class="erm-facet" data-erm-facet="Security">Security <span class="erm-c"></span></div>
-    <div class="erm-facet" data-erm-facet="Plan">Plan <span class="erm-c"></span></div>
-    <div class="erm-facet" data-erm-facet="Guardrails">Guardrails <span class="erm-c"></span></div>
-  </div>
+ <div class="erm-facets" data-erm-facets>
+ <div class="erm-facet on" data-erm-facet="all">All <span class="erm-c"></span></div>
+ <div class="erm-facet" data-erm-facet="Ownership">Ownership <span class="erm-c"></span></div>
+ <div class="erm-facet" data-erm-facet="Architecture">Architecture <span class="erm-c"></span></div>
+ <div class="erm-facet" data-erm-facet="Security">Security <span class="erm-c"></span></div>
+ <div class="erm-facet" data-erm-facet="Plan">Plan <span class="erm-c"></span></div>
+ <div class="erm-facet" data-erm-facet="Guardrails">Guardrails <span class="erm-c"></span></div>
+ </div>
 
-  <div class="erm-fdesc" data-erm-fdesc><span class="erm-ft"></span><span class="erm-fb"></span></div>
+ <div class="erm-fdesc" data-erm-fdesc><span class="erm-ft"></span><span class="erm-fb"></span></div>
 
-  <div class="erm-scrollwrap"><div class="erm-scroll" data-erm-scroll>
+ <div class="erm-scrollwrap"><div class="erm-scroll" data-erm-scroll>
 
-    <!-- CODE RED -->
-    <div class="erm-view on" data-erm-view="red">
+ <!-- CODE RED -->
+ <div class="erm-view on" data-erm-view="red">
 
-      <div class="erm-card" data-topic="Ownership">
-        <div class="erm-chead"><span class="erm-num">01</span><h2 class="erm-title">The model, and who owns the data</h2><span class="erm-chip erm-red">Code red</span></div>
-        <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">I asked which models they run and pressed that the Anthropic API is closed, so you do not own the data and training comes with hoops.</div></div>
-        <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">Anthropic, version four point eight, not retraining, just setting expectations on the export. The live demo ran a Sonnet model, not the one named.</div></div>
-        <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">Name where the model and data live, separate building on a closed model from running on one, and say who owns the data.</div></div>
-        <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">He named a model and dodged ownership and training. On a closed API, TLI owns nothing and rides someone else's uptime. Disqualifying for a PHI build.</div></div>
-        <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">Stand up an owned core on Ollama and Qwen and train it, with an omni model reasoning layer over it, so TLI can move off closed models, cut cost, and own the data.</div></div>
-      </div>
+ <div class="erm-card" data-topic="Ownership">
+ <div class="erm-chead"><span class="erm-num">01</span><h2 class="erm-title">The model, and who owns the data</h2><span class="erm-chip erm-red">Code red</span></div>
+ <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">I asked which models they run and pressed that the Anthropic API is closed, so you do not own the data and training comes with hoops.</div></div>
+ <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">Anthropic, version four point eight, not retraining, just setting expectations on the export. The live demo ran a Sonnet model, not the one named.</div></div>
+ <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">Name where the model and data live, separate building on a closed model from running on one, and say who owns the data.</div></div>
+ <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">He named a model and dodged ownership and training. The gap is data ownership, training rights, and cost, not an absolute block, since closed APIs sign HIPAA BAAs.</div></div>
+ <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">Own and fine-tune Qwen as the core, served via Ollama, so TLI owns the data. Keep PHI on the owned core, and run an omni reasoning layer over closed models only for non-PHI work or under a signed BAA.</div></div>
+ </div>
 
-      <div class="erm-card" data-topic="Ownership">
-        <div class="erm-chead"><span class="erm-num">02</span><h2 class="erm-title">Training on your data so it stays yours</h2><span class="erm-chip erm-red">Code red</span></div>
-        <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">How the system trains on our data so it improves and stays ours, not a rented model.</div></div>
-        <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">Nothing on training. He framed it as setting expectations on the export.</div></div>
-        <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">Describe training on our data, our knowledge in the model, the system and data as the value.</div></div>
-        <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">No path for the result to become ours or improve. TLI stays permanently dependent.</div></div>
-        <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">Use Ollama and Qwen as the open source core and a tool like Unsloth to train it against benchmarks.</div></div>
-      </div>
+ <div class="erm-card" data-topic="Ownership">
+ <div class="erm-chead"><span class="erm-num">02</span><h2 class="erm-title">Training on your data so it stays yours</h2><span class="erm-chip erm-red">Code red</span></div>
+ <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">How the system trains on our data so it improves and stays ours, not a rented model.</div></div>
+ <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">Nothing on training. He framed it as setting expectations on the export.</div></div>
+ <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">Describe training on our data, our knowledge in the model, the system and data as the value.</div></div>
+ <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">No path for the result to become ours or improve. TLI stays permanently dependent.</div></div>
+ <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">Fine-tune Qwen, the open core, with a tool like Unsloth and serve it via Ollama. Train on your data and evaluate against benchmarks, so the system and the data are the value, not a rented model.</div></div>
+ </div>
 
-      <div class="erm-card" data-topic="Security">
-        <div class="erm-chead"><span class="erm-num">03</span><h2 class="erm-title">Business logic attacks and how you test</h2><span class="erm-chip erm-red">Code red</span></div>
-        <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">Building on Andrew, I raised the business logic attack surface, OWASP and its AI testing guides, and the recent case of a chatbot talked into a reset link for someone else's account.</div></div>
-        <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">They use an automated testing tool and AI test cases, and physicians probe for misdiagnosis. Vince had not heard of adversarial prompting.</div></div>
-        <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">An adversarial security posture, not just functional QA.</div></div>
-        <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">Real functional testing, no adversarial security. The risk is someone manipulating the chain to get information they should not.</div></div>
-        <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">Test the model, ideally one you own, against OWASP and its AI guides, and build an adversarial test bank.</div></div>
-      </div>
+ <div class="erm-card" data-topic="Security">
+ <div class="erm-chead"><span class="erm-num">03</span><h2 class="erm-title">Business logic attacks and how you test</h2><span class="erm-chip erm-red">Code red</span></div>
+ <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">Building on Andrew, I raised the business logic attack surface, OWASP and its AI testing guides, and the recent case of a chatbot talked into a reset link for someone else's account.</div></div>
+ <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">They use an automated testing tool and AI test cases, and physicians probe for misdiagnosis. Vince had not heard of adversarial prompting.</div></div>
+ <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">An adversarial security posture, not just functional QA.</div></div>
+ <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">Real functional testing, no adversarial security. The risk is someone manipulating the chain to get information they should not.</div></div>
+ <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">Test the model, ideally one you own, against the OWASP Top 10 for LLM Applications and the web app guide. Build an adversarial test bank for the business logic attack surface.</div></div>
+ </div>
 
-      <div class="erm-card" data-topic="Architecture">
-        <div class="erm-chead"><span class="erm-num">04</span><h2 class="erm-title">The architecture, and where PHI sits</h2><span class="erm-chip erm-red">Code red</span></div>
-        <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">I asked where the data is held, how it is segmented, cloud or container, and where it goes in the chain.</div></div>
-        <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">Great questions, maybe the EMR holds it read only, and he did not have enough to answer.</div></div>
-        <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">Walk one medical file from entry to storage and name the database, segmentation, and PHI boundary.</div></div>
-        <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">He could not say where PHI lives or how a national view is kept from local clinical detail.</div></div>
-        <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">A vector database for retrieval at scale, real segmentation, and an explicit PHI boundary. Security first, compliance after.</div></div>
-      </div>
+ <div class="erm-card" data-topic="Architecture">
+ <div class="erm-chead"><span class="erm-num">04</span><h2 class="erm-title">The architecture, and where PHI sits</h2><span class="erm-chip erm-red">Code red</span></div>
+ <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">I asked where the data is held, how it is segmented, cloud or container, and where it goes in the chain.</div></div>
+ <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">Great questions, maybe the EMR holds it read only, and he did not have enough to answer.</div></div>
+ <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">Walk one medical file from entry to storage and name the database, segmentation, and PHI boundary.</div></div>
+ <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">He could not say where PHI lives or how a national view is kept from local clinical detail.</div></div>
+ <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">Name the system of record for PHI, with a vector database as the retrieval layer inside the PHI boundary, since PHI embeddings are still PHI. Real segmentation, security first, compliance after.</div></div>
+ </div>
 
-      <div class="erm-card" data-topic="Architecture">
-        <div class="erm-chead"><span class="erm-num">05</span><h2 class="erm-title">Built purely on HTML, the Code Red</h2><span class="erm-chip erm-red">Code red</span></div>
-        <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">He described the build as pure HTML. I flagged it Code Red.</div></div>
-        <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">Serving HTML sites with a Git repo and a content delivery network, and the rebuilt station scored 99 on performance.</div></div>
-        <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">A real architecture with nested access and control, defense in depth, behind the page.</div></div>
-        <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">A static page has no backend for access or control. Healthcare data needs defense in depth. Their own live site is dynamic with a HIPAA form, so the mock is a regression.</div></div>
-        <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">A real architecture with nested access and control, not a flat page that reads fast but cannot carry PHI.</div></div>
-      </div>
+ <div class="erm-card" data-topic="Architecture">
+ <div class="erm-chead"><span class="erm-num">05</span><h2 class="erm-title">Built purely on HTML, the Code Red</h2><span class="erm-chip erm-red">Code red</span></div>
+ <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">He described the build as pure HTML. I flagged it Code Red.</div></div>
+ <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">Serving HTML sites with a Git repo and a content delivery network, and the rebuilt station scored 99 on performance.</div></div>
+ <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">A real architecture with nested access and control, defense in depth, behind the page.</div></div>
+ <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">A static page has no backend for access or control. Healthcare data needs defense in depth. Their own live site is dynamic with a HIPAA form, so the mock is a regression.</div></div>
+ <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">A real architecture with nested access and control, not a flat page that reads fast but cannot carry PHI.</div></div>
+ </div>
 
-      <div class="erm-card" data-topic="Plan">
-        <div class="erm-chead"><span class="erm-num">06</span><h2 class="erm-title">The plan, not just the deliverables</h2><span class="erm-chip erm-red">Code red</span></div>
-        <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">Across the call it was clear Ernie wanted the team to tell him what to build.</div></div>
-        <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">No specs or scope of work, not engaged yet, everything shown is spec, and TLI's disconnect is that no one on their side is technical.</div></div>
-        <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">A clear plan and order of operations, what gets built, when, and why.</div></div>
-        <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">There is no plan. A regulated market needs architecture planned up front, even before engagement.</div></div>
-        <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">A crawl, walk, run rollout with the architecture planned up front, especially around the FDA path. Their own slide admitted the same.</div></div>
-      </div>
+ <div class="erm-card" data-topic="Plan">
+ <div class="erm-chead"><span class="erm-num">06</span><h2 class="erm-title">The plan, not just the deliverables</h2><span class="erm-chip erm-red">Code red</span></div>
+ <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">Across the call it was clear Ernie wanted the team to tell him what to build.</div></div>
+ <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">No specs or scope of work, not engaged yet, everything shown is spec, and TLI's disconnect is that no one on their side is technical.</div></div>
+ <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">A clear plan and order of operations, what gets built, when, and why.</div></div>
+ <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">There is no plan. A regulated market needs architecture planned up front, even before engagement.</div></div>
+ <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">A crawl, walk, run rollout with the architecture planned up front, especially around the FDA path. Their own slide admitted the same.</div></div>
+ </div>
 
-      <div class="erm-card" data-topic="Plan">
-        <div class="erm-chead"><span class="erm-num">07</span><h2 class="erm-title">The FDA pathway</h2><span class="erm-chip erm-red">Code red</span></div>
-        <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">Levi asked if they had taken a product through the FDA. I am adding my advisement.</div></div>
-        <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">No, and the level one quote assumed no FDA submission.</div></div>
-        <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">Honesty that this is a gap, which his was.</div></div>
-        <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">A disqualifying gap for a regulated build on Dr. Denman's credibility, if left to the vendor.</div></div>
-        <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">Bring the FDA pathway in through Levi and phase it crawl, walk, run. Do not let the vendor improvise it.</div></div>
-      </div>
+ <div class="erm-card" data-topic="Plan">
+ <div class="erm-chead"><span class="erm-num">07</span><h2 class="erm-title">The FDA pathway</h2><span class="erm-chip erm-red">Code red</span></div>
+ <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">Levi asked if they had taken a product through the FDA. I am adding my advisement.</div></div>
+ <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">No, and the level one quote assumed no FDA submission.</div></div>
+ <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">Honesty that this is a gap, which his was.</div></div>
+ <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">A disqualifying gap for a regulated build on Dr. Denman's credibility, if left to the vendor.</div></div>
+ <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">Bring the FDA pathway in through Levi and phase it crawl, walk, run. Do not let the vendor improvise it.</div></div>
+ </div>
 
-    </div>
+ </div>
 
-    <!-- CAUTION -->
-    <div class="erm-view" data-erm-view="amb">
+ <!-- CAUTION -->
+ <div class="erm-view" data-erm-view="amb">
 
-      <div class="erm-card" data-topic="Guardrails">
-        <div class="erm-chead"><span class="erm-num">01</span><h2 class="erm-title">Guardrails, hard versus soft, and life and death</h2><span class="erm-chip erm-amb">Caution</span></div>
-        <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">I drew the line between hard guardrails, the deterministic rules baked in, and soft guardrails, trust earned over time, and asked if an owned model was on the roadmap.</div></div>
-        <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">They put guardrails on the model and set expectations, and triage cannot go live because the model cannot be trusted. Vince added it still hallucinates.</div></div>
-        <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">Separate hard from soft guardrails and show a path to earning trust over time.</div></div>
-        <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">The premise that AI can never be trusted with care is wrong. Hard guardrails are deterministic, soft ones are earned by training. Ruling it out caps the product.</div></div>
-        <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">Keep the hard guardrails and build toward earned soft guardrail trust by training an owned model.</div></div>
-      </div>
+ <div class="erm-card" data-topic="Guardrails">
+ <div class="erm-chead"><span class="erm-num">01</span><h2 class="erm-title">Guardrails, hard versus soft, and life and death</h2><span class="erm-chip erm-amb">Caution</span></div>
+ <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">I drew the line between hard guardrails, the deterministic rules baked in, and soft guardrails, trust earned over time, and asked if an owned model was on the roadmap.</div></div>
+ <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">They put guardrails on the model and set expectations, and triage cannot go live because the model cannot be trusted. Vince added it still hallucinates.</div></div>
+ <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">Separate hard from soft guardrails and show a path to earning trust over time.</div></div>
+ <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">The premise that AI can never be trusted with care is wrong. Hard guardrails are deterministic, soft ones are earned by training. Ruling it out caps the product.</div></div>
+ <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">Keep the deterministic hard guardrails and earn soft guardrail trust by training an owned model. Even then clinical triage stays Software as a Medical Device with human oversight, not an autonomous call.</div></div>
+ </div>
 
-      <div class="erm-card" data-topic="Architecture">
-        <div class="erm-chead"><span class="erm-num">02</span><h2 class="erm-title">The Nexstar scrape, and where the data is handled</h2><span class="erm-chip erm-amb">Caution</span></div>
-        <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">On the Nexstar pilot he called the scraping safe and governed. I asked where that data is handled.</div></div>
-        <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">The safe and governed claim, with no answer on where the data lives.</div></div>
-        <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">Show the data handling path on a system they have already shipped.</div></div>
-        <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">A claim without proof, the same gap as PHI, on a build they actually run.</div></div>
-        <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">Make the vendor show the data path on a live system before trusting the same claim on PHI.</div></div>
-      </div>
+ <div class="erm-card" data-topic="Architecture">
+ <div class="erm-chead"><span class="erm-num">02</span><h2 class="erm-title">The Nexstar scrape, and where the data is handled</h2><span class="erm-chip erm-amb">Caution</span></div>
+ <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">On the Nexstar pilot he called the scraping safe and governed. I asked where that data is handled.</div></div>
+ <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">The safe and governed claim, with no answer on where the data lives.</div></div>
+ <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">Show the data handling path on a system they have already shipped.</div></div>
+ <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">A claim without proof, the same gap as PHI, on a build they actually run.</div></div>
+ <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">Make the vendor show the data path on a live system before trusting the same claim on PHI.</div></div>
+ </div>
 
-      <div class="erm-card" data-topic="Security">
-        <div class="erm-chead"><span class="erm-num">03</span><h2 class="erm-title">Security versus compliance, and the go live plan</h2><span class="erm-chip erm-amb">Caution</span></div>
-        <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">I noted SOC 2 is lengthy and pressed on the go live plan and the architecture behind it.</div></div>
-        <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">HIPAA, SOC 2, and HiTrust are a layer on top with a cost document, and SOC 2 can take a year. He had a security and trust document for Michael.</div></div>
-        <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">Treat security as architecture, not a compliance checkbox added later.</div></div>
-        <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">He framed compliance as cost and timeline, not security architecture. The two do not speak the same language.</div></div>
-        <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">Build go live around security and compliance together. Security lands enterprise customers sooner and pulls compliance along. The only exception is FedRAMP.</div></div>
-      </div>
+ <div class="erm-card" data-topic="Security">
+ <div class="erm-chead"><span class="erm-num">03</span><h2 class="erm-title">Security versus compliance, and the go live plan</h2><span class="erm-chip erm-amb">Caution</span></div>
+ <div class="erm-row"><div class="erm-rl">Raised</div><div class="erm-rt">I noted SOC 2 is lengthy and pressed on the go live plan and the architecture behind it.</div></div>
+ <div class="erm-row"><div class="erm-rl">Ernie said</div><div class="erm-rt">HIPAA, SOC 2, and HiTrust are a layer on top with a cost document, and SOC 2 can take a year. He had a security and trust document for Michael.</div></div>
+ <div class="erm-row"><div class="erm-rl">A strong answer</div><div class="erm-rt">Treat security as architecture, not a compliance checkbox added later.</div></div>
+ <div class="erm-row"><div class="erm-rl">My read</div><div class="erm-rt">He framed compliance as cost and timeline, not security architecture. The two do not speak the same language.</div></div>
+ <div class="erm-adv"><div class="erm-al">Advisement</div><div class="erm-at">Treat HIPAA as a day-one baseline, BAAs and the Security Rule. Build security as architecture and let SOC 2 and HITRUST be customer-pulled. FedRAMP is the federal exception.</div></div>
+ </div>
 
-    </div>
+ </div>
 
-  </div></div>
+ </div></div>
 
 </div>
 </div>
 
 <script>
 (function(){
-  var root=document.currentScript.closest('.erm-root')||document.querySelector('.erm-root');
-  if(!root) return;
-  var DESC={
-    all:["All","Every point from the read in this view."],
-    Ownership:["Ownership","Whether TLI owns its model and data, or rents them from a closed provider."],
-    Architecture:["Architecture","Where data and PHI live, and whether a real system sits behind the page."],
-    Security:["Security","How the build is tested and defended, and whether security is treated as architecture."],
-    Plan:["Plan","Whether there is an order of operations and an FDA pathway, not just deliverables."],
-    Guardrails:["Guardrails","Whether the model is trusted with care through training, with hard and soft guardrails."]
-  };
-  var sev='red', topic='all';
-  var tabs=root.querySelectorAll('[data-erm-tab]');
-  var views=root.querySelectorAll('[data-erm-view]');
-  var facets=root.querySelectorAll('[data-erm-facet]');
-  var fdesc=root.querySelector('[data-erm-fdesc]');
-  var scroll=root.querySelector('[data-erm-scroll]');
-  function activeView(){return root.querySelector('[data-erm-view="'+sev+'"]');}
-  function activeCards(){return activeView().querySelectorAll('.erm-card');}
-  function recount(){
-    facets.forEach(function(f){
-      var t=f.getAttribute('data-erm-facet'),n=0;
-      activeCards().forEach(function(c){ if(t==='all'||c.getAttribute('data-topic')===t) n++; });
-      f.querySelector('.erm-c').textContent=n;
-      f.classList.toggle('off', n===0 && t!=='all');
-    });
-  }
-  function applyTopic(){
-    var n=0;
-    activeCards().forEach(function(c){
-      var show=(topic==='all'||c.getAttribute('data-topic')===topic);
-      c.style.display=show?'':'none';
-      if(show){ n++; var num=c.querySelector('.erm-num'); if(num) num.textContent=(n<10?'0':'')+n; }
-    });
-  }
-  function setDesc(t){
-    var d=DESC[t]||DESC.all;
-    fdesc.querySelector('.erm-ft').textContent=d[0];
-    fdesc.querySelector('.erm-fb').textContent=d[1];
-  }
-  function setFacet(t){
-    topic=t;
-    facets.forEach(function(f){f.classList.toggle('on', f.getAttribute('data-erm-facet')===t);});
-    applyTopic();
-    setDesc(t);
-    scroll.scrollTop=0;
-  }
-  function setSev(s){
-    sev=s; topic='all';
-    tabs.forEach(function(p){p.classList.toggle('on', p.getAttribute('data-erm-tab')===s);});
-    views.forEach(function(v){v.classList.toggle('on', v.getAttribute('data-erm-view')===s);});
-    recount();
-    setFacet('all');
-  }
-  tabs.forEach(function(p){p.addEventListener('click',function(){setSev(p.getAttribute('data-erm-tab'));});});
-  facets.forEach(function(f){f.addEventListener('click',function(){if(!f.classList.contains('off'))setFacet(f.getAttribute('data-erm-facet'));});});
-  setSev('red');
+ var root=document.currentScript.closest('.erm-root')||document.querySelector('.erm-root');
+ if(!root) return;
+ var DESC={
+ all:["All","Every point from the read in this view."],
+ Ownership:["Ownership","Whether TLI owns its model and data, or rents them from a closed provider."],
+ Architecture:["Architecture","Where data and PHI live, and whether a real system sits behind the page."],
+ Security:["Security","How the build is tested and defended, and whether security is treated as architecture."],
+ Plan:["Plan","Whether there is an order of operations and an FDA pathway, not just deliverables."],
+ Guardrails:["Guardrails","Whether the model is trusted with care through training, with hard and soft guardrails."]
+ };
+ var sev='red', topic='all';
+ var tabs=root.querySelectorAll('[data-erm-tab]');
+ var views=root.querySelectorAll('[data-erm-view]');
+ var facets=root.querySelectorAll('[data-erm-facet]');
+ var fdesc=root.querySelector('[data-erm-fdesc]');
+ var scroll=root.querySelector('[data-erm-scroll]');
+ function activeView(){return root.querySelector('[data-erm-view="'+sev+'"]');}
+ function activeCards(){return activeView().querySelectorAll('.erm-card');}
+ function recount(){
+ facets.forEach(function(f){
+ var t=f.getAttribute('data-erm-facet'),n=0;
+ activeCards().forEach(function(c){ if(t==='all'||c.getAttribute('data-topic')===t) n++; });
+ f.querySelector('.erm-c').textContent=n;
+ f.classList.toggle('off', n===0 && t!=='all');
+ });
+ }
+ function applyTopic(){
+ var n=0;
+ activeCards().forEach(function(c){
+ var show=(topic==='all'||c.getAttribute('data-topic')===topic);
+ c.style.display=show?'':'none';
+ if(show){ n++; var num=c.querySelector('.erm-num'); if(num) num.textContent=(n<10?'0':'')+n; }
+ });
+ }
+ function setDesc(t){
+ var d=DESC[t]||DESC.all;
+ fdesc.querySelector('.erm-ft').textContent=d[0];
+ fdesc.querySelector('.erm-fb').textContent=d[1];
+ }
+ function setFacet(t){
+ topic=t;
+ facets.forEach(function(f){f.classList.toggle('on', f.getAttribute('data-erm-facet')===t);});
+ applyTopic();
+ setDesc(t);
+ scroll.scrollTop=0;
+ }
+ function setSev(s){
+ sev=s; topic='all';
+ tabs.forEach(function(p){p.classList.toggle('on', p.getAttribute('data-erm-tab')===s);});
+ views.forEach(function(v){v.classList.toggle('on', v.getAttribute('data-erm-view')===s);});
+ recount();
+ setFacet('all');
+ }
+ tabs.forEach(function(p){p.addEventListener('click',function(){setSev(p.getAttribute('data-erm-tab'));});});
+ facets.forEach(function(f){f.addEventListener('click',function(){if(!f.classList.contains('off'))setFacet(f.getAttribute('data-erm-facet'));});});
+ setSev('red');
 })();
 </script>
 </body>
